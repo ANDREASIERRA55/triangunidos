@@ -1,7 +1,4 @@
 {
-  "dependencies": {
-    "tone": "^14.8.49"
-  },
   "scripts": {
     "sass": "sass --watch styles.scss:styles.css"
   }
