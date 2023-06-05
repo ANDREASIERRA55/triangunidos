@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    background: red;
+    gap: 20px;
+    h1{
+        text-align: center;
+    }
+    section{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        h2{
+            text-align: center;
+        }
+        >div{
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            >div{
+                width: 60px;
+                height: 60px;
+                background-color: aqua;
+                display: flex;
+                justify-content: flex-end;
+                p{
+                    background-color: beige;
+                }
+
+
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: red;
+  gap: 20px;
+}
+body h1 {
+  text-align: center;
+}
+body section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+body section h2 {
+  text-align: center;
+}
+body section > div {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+body section > div > div {
+  width: 60px;
+  height: 60px;
+  background-color: aqua;
+  display: flex;
+  justify-content: flex-end;
+}
+body section > div > div p {
+  background-color: beige;
+}
+
+/*# sourceMappingURL=styles.css.map */
