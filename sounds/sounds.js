@@ -45,109 +45,149 @@ let drums = [
     id: "tom4",
     src: "./sounds/drums/tom4.wav",
     type: "audio/wav",
-    key: "k",
-  }
+    key: "K",
+  },
 ];
-let kalimbas = [
+
+const kalimbas = [
   {
-    id: "kalimbab",
-    src: "./sounds/kalimbas/kalimba-b.mp3",
+    id: "kalimbaz",
+    src: "./sounds/kalimba/kalimba-c.mp3",
     type: "audio/mp3",
-    key: "B",
-  },
-  {
-    id: "kalimbac",
-    src: "./sounds/kalimbas/kalimba-c.mp3",
-    type: "audio/mp3",
-    key: "C",
-  },
-  {
-    id: "kalimbacoma",
-    src: "./sounds/kalimbas/kalimba-coma.mp3",
-    type: "audio/mp3",
-    key: ",",
-  },
-  {
-    id: "kalimbam",
-    src: "./sounds/kalimbas/kalimba-m.mp3",
-    type: "audio/mp3",
-    key: "M",
-  },
-  {
-    id: "kalimban",
-    src: "./sounds/kalimbas/kalimba-n.mp3",
-    type: "audio/mp3",
-    key: "N",
-  },
-  {
-    id: "kalimbav",
-    src: "./sounds/kalimbas/kalimba-v.mp3",
-    type: "audio/mp3",
-    key: "V",
+    key: "Z",
   },
   {
     id: "kalimbax",
-    src: "./sounds/kalimbas/kalimba-x.mp3",
+    src: "./sounds/kalimba/kalimba-d.mp3",
     type: "audio/mp3",
     key: "X",
   },
   {
-    id: "kalimbaz",
-    src: "./sounds/kalimbas/kalimba-z.mp3",
+    id: "kalimbac",
+    src: "./sounds/kalimba/kalimba-e.mp3",
     type: "audio/mp3",
-    key: "Z"
-  }
-]
+    key: "C",
+  },
+  {
+    id: "kalimbav",
+    src: "./sounds/kalimba/kalimba-f.mp3",
+    type: "audio/mp3",
+    key: "V",
+  },
+  {
+    id: "kalimbab",
+    src: "./sounds/kalimba/kalimba-g.mp3",
+    type: "audio/mp3",
+    key: "B",
+  },
+  {
+    id: "kalimban",
+    src: "./sounds/kalimba/kalimba-a.mp3",
+    type: "audio/mp3",
+    key: "N",
+  },
+  {
+    id: "kalimbam",
+    src: "./sounds/kalimba/kalimba-b.mp3",
+    type: "audio/mp3",
+    key: "M",
+  },
+  {
+    id: "kalimbacoma",
+    src: "./sounds/kalimba/kalimba-c8.mp3",
+    type: "audio/mp3",
+    key: ",",
+  },
+];
+
 const drumsElement = document.getElementById("drums");
+const kalimbasElement = document.getElementById("kalimbas");
 let drumsDiv = "";
-const kalimbaElement = document.getElementById("kalimbas");
 let kalimbasDiv = "";
 
 for (let i = 0; i < drums.length; i++) {
   const drum = drums[i];
-  drumsDiv += ` <div onclick="playAudio('${drum.id}')">
-  <audio id="${drum.id}">
-    <source src="${drum.src}" type="${drum.type}">
-  </audio>
-  <p>${drum.key}</p>
-  </div>`;
+  drumsDiv += `<div class="key-container" data-key="${drum.key}" onclick="playAudio('${drum.id}')">
+                <audio id="${drum.id}">
+                  <source src="${drum.src}" type="${drum.type}">
+                </audio>
+                <p>${drum.key}</p>
+               </div>`;
 }
 for (let i = 0; i < kalimbas.length; i++) {
   const kalimba = kalimbas[i];
-  kalimbasDiv += `<div onclick="playaudio('${kalimba.id}')">
-  <audio id="${kalimba.id}">
-    <source src="${kalimba.src}" type="${kalimba.type}">
-  </audio>
-  <p>${kalimba.key}</p>
-  </div>`;
-  
+  kalimbasDiv += `<div class="key-container" data-key="${kalimba.key}" onclick="playAudio('${kalimba.id}')">
+                <audio id="${kalimba.id}">
+                  <source src="${kalimba.src}" type="${kalimba.type}">
+                </audio>
+                <p>${kalimba.key}</p>
+               </div>`;
 }
 
 drumsElement.innerHTML = drumsDiv;
-kalimbaElement.innerHTML = kalimbasDiv;
+kalimbasElement.innerHTML = kalimbasDiv;
 
+function playAudio(id) {
+  const drum = drums.find((drum) => drum.id === id);
+  const kalimba = kalimbas.find((kalimba) => kalimba.id === id);
 
+  if (drum) {
+    const audio = new Audio(drum.src);
+    audio.play();
+  }
 
-function playAudio(note) {
-  const audio = document.getElementById(note);
-  audio.play();
+  if (kalimba) {
+    const audio = new Audio(kalimba.src);
+    audio.play();
+  }
 }
-
-
-
 
 document.addEventListener("keydown", function (event) {
   const key = event.key.toUpperCase();
   const drum = drums.find((drum) => drum.key === key);
+  const kalimba = kalimbas.find((kalimba) => kalimba.key === key);
+
   if (drum) {
     playAudio(drum.id);
+    const keyContainer = document.querySelector(
+      `.key-container[data-key="${drum.key}"]`
+    );
+    if (keyContainer) {
+      keyContainer.classList.add("key-down");
+    }
+  }
+
+  if (kalimba) {
+    playAudio(kalimba.id);
+    const keyContainer = document.querySelector(
+      `.key-container[data-key="${kalimba.key}"]`
+    );
+    if (keyContainer) {
+      keyContainer.classList.add("key-down");
+    }
   }
 });
 
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keyup", function (event) {
   const key = event.key.toUpperCase();
+  const drum = drums.find((drum) => drum.key === key);
   const kalimba = kalimbas.find((kalimba) => kalimba.key === key);
+
+  if (drum) {
+    const keyContainer = document.querySelector(
+      `.key-container[data-key="${drum.key}"]`
+    );
+    if (keyContainer) {
+      keyContainer.classList.remove("key-down");
+    }
+  }
+
   if (kalimba) {
-    playAudio(kalimba.id);
+    const keyContainer = document.querySelector(
+      `.key-container[data-key="${kalimba.key}"]`
+    );
+    if (keyContainer) {
+      keyContainer.classList.remove("key-down");
+    }
   }
 });
