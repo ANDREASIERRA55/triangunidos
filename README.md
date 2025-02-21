@@ -1,25 +1,36 @@
 # Triangunidos 🎵
 
-## Descripción
-Triangunidos es una aplicación musical responsive que permite tocar sonidos de batería (Drums) y kalimba mediante el teclado del ordenador o botones en pantalla en dispositivos móviles.
+**Triangunidos** es una aplicación musical interactiva que permite reproducir sonidos de batería y kalimba tanto desde un teclado de ordenador como desde botones táctiles en dispositivos móviles.
 
-## Tecnologías utilizadas
-- **HTML**
-- **SCSS** (CSS preprocesado)
-- **JavaScript**
+## 🚀 Características
 
-## Características ✨
-✅ Toca sonidos de batería con las teclas del ordenador o con botones en pantalla en móviles.  
-✅ Explora los sonidos de la kalimba de la misma manera.  
-✅ Diseño adaptable para una experiencia fluida en distintos dispositivos.  
-✅ Implementado en GitHub Pages y próximamente en Firebase.  
+- 🎹 **Modo teclado**: Toca diferentes sonidos usando las teclas del teclado.
+- 📱 **Modo táctil**: En dispositivos móviles, presiona los botones en pantalla para generar los sonidos.
+- 🥁 **Sonidos de batería**: Incluye crash, hi-hat, roll y varios toms.
+- 🎶 **Sonidos de kalimba**: Reproduce notas de kalimba con distintas teclas.
+- 🌍 **Responsive**: Funciona en ordenadores y dispositivos móviles.
 
-## Instalación y ejecución
-Este proyecto no requiere instalación. Para ejecutarlo localmente:
-1. Clona el repositorio:
+## 🛠️ Tecnologías utilizadas
+
+- **JavaScript** (interactividad y reproducción de audio)
+- **SCSS** (estilos y diseño responsive)
+- **HTML** (estructura del proyecto)
+
+## 📦 Instalación y uso
+
+1. Clona este repositorio:
    ```bash
    git clone https://github.com/ANDREASIERRA55/Triangunidos.git
+   cd Triangunidos
    ```
+
+2. Abre el archivo `index.html` en tu navegador.
+
+## 🔥 Uso
+
+- En ordenador: Usa las teclas `A, S, D, F, G, H, J, K` para los sonidos de batería y `Z, X, C, V, B, N, M, ,` para los sonidos de kalimba.
+- En móvil: Toca los botones en pantalla para reproducir los sonidos.
+
 
 ## Demo en vivo 🌐
 Puedes probar la aplicación aquí:  
